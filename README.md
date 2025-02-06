@@ -1,6 +1,6 @@
 # CWS - Lightweight WebSocket Client Library
 
-Overview
+## Overview
 
 CWS (Compact WebSocket) is a lightweight C library for handling WebSocket client connections. It provides essential functions for establishing WebSocket handshakes, sending and receiving messages, and managing WebSocket frames efficiently.
 
@@ -23,14 +23,16 @@ CWS (Compact WebSocket) is a lightweight C library for handling WebSocket client
 
 To use CWS, include cws.h in your project and define CWS_IMPLEMENTATION in one source file before including it:
 
+```code
 #define CWS_IMPLEMENTATION
 #include "cws.h"
+```
 
 Compile your project as usual, ensuring that your compiler supports C99 or later.
 
 # API Usage
 
-Initialization
+__Initialization__
 
 Before using CWS, you need to initialize a Cws instance with appropriate function pointers:
 
