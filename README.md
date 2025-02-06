@@ -1,4 +1,4 @@
 # SocketsinC
 Custom Websocket implemintation in C
 
-<h1>Shitty Websocket</h1>
+## Made this in like an hour
