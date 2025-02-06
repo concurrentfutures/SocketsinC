@@ -293,7 +293,7 @@ int cws_send_frame(Cws *cws, bool fin, Cws_Opcode opcode, const uint8_t *payload
     // Send masked and payload length
     {
         // TODO: do we need to reverse the bytes on a machine with a different endianess than x86?
-        // NOTE: client frames are always masked
+        // NOTE: client frames are always masked cuz idk man thats how they are
         if (payload_len < 126) {
             uint8_t data = (1 << 7) | payload_len;
 
