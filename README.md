@@ -36,6 +36,7 @@ __Initialization__
 
 Before using CWS, you need to initialize a Cws instance with appropriate function pointers:
 
+```c
 Cws cws = {
     .socket = my_socket,  // Your socket object
     .read = my_socket_read,
@@ -44,6 +45,7 @@ Cws cws = {
     .alloc = my_alloc,
     .free = my_free,
 };
+```
 
 WebSocket Handshake
 
