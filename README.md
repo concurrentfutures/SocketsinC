@@ -1,8 +1,8 @@
-# CWS - Lightweight WebSocket Client Library
+# CWS - Lightweight WebSockets Client Library
 
 ## Overview
 
-CWS (Compact WebSocket) is a lightweight C library for handling WebSocket client connections. It provides essential functions for establishing WebSocket handshakes, sending and receiving messages, and managing WebSocket frames efficiently.
+CWS (Compact WebSockets) is a lightweight C library for handling WebSocket client connections. It provides essential functions for establishing WebSocket handshakes, sending and receiving messages, and managing WebSocket frames efficiently.
 
 # Features
 
@@ -82,13 +82,13 @@ if (cws_read_message(&cws, &message) == 0) {
 
 To send a WebSocket frame:
 
-```code
+```
 cws_send_frame(&cws, true, CWS_OPCODE_TEXT, (const uint8_t *)"Hello", 5);
 ```
 
 To receive a WebSocket frame:
 
-```code
+```
 Cws_Frame frame = {0};
 if (cws_read_frame(&cws, &frame) == 0) {
     printf("Received frame of opcode %d\n", frame.opcode);
@@ -96,16 +96,19 @@ if (cws_read_frame(&cws, &frame) == 0) {
 }
 ```
 
-Error Handling
+# Error Handling
 
 CWS provides error codes for debugging:
 
+```c
 if (cws.error != CWS_NO_ERROR) {
     printf("Error: %s\n", cws_get_error_string(&cws));
 }
+```
 
-Error Codes
+# Error Codes
 
+```code
 CWS_NO_ERROR – No error.
 
 CWS_CLIENT_HANDSHAKE_ERROR – WebSocket handshake failed.
@@ -115,19 +118,19 @@ CWS_SOCKET_ERROR – Socket read/write failure.
 CWS_ALLOCATOR_ERROR – Memory allocation failure.
 
 CWS_SERVER_CLOSE_ERROR – Server sent a CLOSE frame.
+```
+
+# Notes & TODOs
+
+- The server handshake response is currently ignored.
+
+- The implementation assumes little-endian byte order.
+
+- The client frames are always masked per WebSocket specifications.
 
 
-Notes & TODOs
+# License
 
-The server handshake response is currently ignored.
-
-The implementation assumes little-endian byte order.
-
-The client frames are always masked per WebSocket specifications.
-
-
-License
-
-This project is licensed under the MIT License.
+- This project is licensed under the MIT License.
 
 
