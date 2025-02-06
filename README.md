@@ -23,7 +23,7 @@ CWS (Compact WebSocket) is a lightweight C library for handling WebSocket client
 
 To use CWS, include cws.h in your project and define CWS_IMPLEMENTATION in one source file before including it:
 
-```code
+```c
 #define CWS_IMPLEMENTATION
 #include "cws.h"
 ```
@@ -32,7 +32,7 @@ Compile your project as usual, ensuring that your compiler supports C99 or later
 
 # API Usage
 
-__Initialization__
+Initialization
 
 Before using CWS, you need to initialize a Cws instance with appropriate function pointers:
 
@@ -47,44 +47,54 @@ Cws cws = {
 };
 ```
 
-WebSocket Handshake
+# WebSocket Handshake
 
 To establish a WebSocket connection with a server:
 
+```c
 if (cws_client_handshake(&cws, "example.com") != 0) {
     printf("Handshake failed: %s\n", cws_get_error_string(&cws));
 }
+```
 
-Sending Messages
+# Sending Messages
 
 To send a text or binary WebSocket message:
 
+```c
 const char *message = "Hello, WebSocket!";
 cws_send_message(&cws, CWS_MESSAGE_TEXT, (const uint8_t *)message, strlen(message), 1024);
+```
 
-Receiving Messages
+# Receiving Messages
 
 To receive a WebSocket message:
 
+```c
 Cws_Message message;
 if (cws_read_message(&cws, &message) == 0) {
     printf("Received message of length %llu\n", message.chunks->payload_len);
     cws_free_message(&cws, &message);
 }
+```
 
-Sending and Receiving Frames
+# Sending and Receiving Frames
 
 To send a WebSocket frame:
 
+```code
 cws_send_frame(&cws, true, CWS_OPCODE_TEXT, (const uint8_t *)"Hello", 5);
+```
 
 To receive a WebSocket frame:
 
+```code
 Cws_Frame frame = {0};
 if (cws_read_frame(&cws, &frame) == 0) {
     printf("Received frame of opcode %d\n", frame.opcode);
     cws_free_frame(&cws, &frame);
 }
+```
 
 Error Handling
 
